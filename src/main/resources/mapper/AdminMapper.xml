@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.glut.jiudian.dao.AdminMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.glut.jiudian.entity.Admin">
+    <id column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+    <result column="admin_pwd" jdbcType="VARCHAR" property="adminPwd" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.glut.jiudian.entity.Admin">
+    insert into t_admin (admin_id, admin_name, admin_pwd
+      )
+    values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{adminPwd,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.glut.jiudian.entity.Admin">
+    update t_admin
+    set admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_pwd = #{adminPwd,jdbcType=VARCHAR}
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select admin_id, admin_name, admin_pwd
+    from t_admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAdmin" resultType="cn.edu.glut.jiudian.entity.Admin">
+    select admin_id, admin_name, admin_pwd
+    from t_admin
+    where admin_name = #{adminName,jdbcType=VARCHAR}
+    and admin_pwd = #{adminPwd}
+  </select>
+
+  <!--<select id="selectAll" resultMap="BaseResultMap">-->
+    <!--select admin_id, admin_name, admin_pwd-->
+    <!--from t_admin-->
+  <!--</select>-->
+</mapper>

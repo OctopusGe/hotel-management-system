@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.glut.jiudian.dao.NoticeMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.glut.jiudian.entity.Notice">
+    <id column="ser_num" jdbcType="INTEGER" property="serNum" />
+    <result column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="notice" jdbcType="VARCHAR" property="notice" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_notice
+    where ser_num = #{serNum,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.glut.jiudian.entity.Notice">
+    insert into t_notice (ser_num, admin_id, notice, 
+      release_time)
+    values (#{serNum,jdbcType=INTEGER}, #{adminId,jdbcType=INTEGER}, #{notice,jdbcType=VARCHAR}, 
+      #{releaseTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.glut.jiudian.entity.Notice">
+    update t_notice
+    set admin_id = #{adminId,jdbcType=INTEGER},
+      notice = #{notice,jdbcType=VARCHAR},
+      release_time = #{releaseTime,jdbcType=TIMESTAMP}
+    where ser_num = #{serNum,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select ser_num, admin_id, notice, release_time
+    from t_notice
+    where ser_num = #{serNum,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ser_num, admin_id, notice, release_time
+    from t_notice order by release_time desc
+  </select>
+</mapper>

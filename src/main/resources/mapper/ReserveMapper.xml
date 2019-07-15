@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.glut.jiudian.dao.ReserveMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.glut.jiudian.entity.Reserve">
+    <id column="room_id" jdbcType="VARCHAR" property="roomId" />
+    <result column="count_date" jdbcType="INTEGER" property="countDate" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="preset_time" jdbcType="TIMESTAMP" property="presetTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_book_a_room
+    where room_id = #{roomId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.glut.jiudian.entity.Reserve">
+    insert into t_book_a_room (room_id, count_date, user_name, 
+      phone, preset_time)
+    values (#{roomId,jdbcType=VARCHAR}, #{countDate,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{presetTime})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.glut.jiudian.entity.Reserve">
+    update t_book_a_room
+    set count_date = #{countDate,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      preset_time = #{presetTime,jdbcType=TIMESTAMP}
+    where room_id = #{roomId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select room_id, count_date, user_name, phone, preset_time
+    from t_book_a_room
+    where room_id = #{roomId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select room_id, count_date, user_name, phone, preset_time
+    from t_book_a_room order by count_date asc
+  </select>
+
+  <select id="isReservation" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select count(*)
+    from t_book_a_room
+    where room_id = #{roomId,jdbcType=VARCHAR}
+  </select>
+</mapper>

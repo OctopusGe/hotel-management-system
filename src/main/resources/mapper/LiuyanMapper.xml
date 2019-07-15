@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.glut.jiudian.dao.LiuyanMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.glut.jiudian.entity.Liuyan">
+    <id column="ser_num" jdbcType="BIGINT" property="serNum" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="liuyan" jdbcType="VARCHAR" property="liuyan" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_liuyan
+    where ser_num = #{serNum,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.glut.jiudian.entity.Liuyan">
+    insert into t_liuyan (ser_num, user_name, liuyan, 
+      release_time)
+    values (#{serNum,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{liuyan,jdbcType=VARCHAR}, 
+      #{releaseTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.glut.jiudian.entity.Liuyan">
+    update t_liuyan
+    set user_name = #{userName,jdbcType=VARCHAR},
+      liuyan = #{liuyan,jdbcType=VARCHAR},
+      release_time = #{releaseTime,jdbcType=TIMESTAMP}
+    where ser_num = #{serNum,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select ser_num, user_name, liuyan, release_time
+    from t_liuyan
+    where ser_num = #{serNum,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ser_num, user_name, liuyan, release_time
+    from t_liuyan
+  </select>
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.glut.jiudian.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.glut.jiudian.entity.Comment">
+    <id column="ser_num" jdbcType="INTEGER" property="serNum" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="room_id" jdbcType="VARCHAR" property="roomId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_comment
+    where ser_num = #{serNum,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.glut.jiudian.entity.Comment">
+    insert into t_comment (ser_num, user_name, room_id, 
+      content, release_time)
+    values (#{serNum,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{roomId,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{releaseTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.glut.jiudian.entity.Comment">
+    update t_comment
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="room_id != null">
+        room_id = #{roomId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseTime != null">
+        release_time = #{releaseTime,jdbcType=TIMESTAMP}
+      </if>
+    </set>
+    where ser_num = #{serNum,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select ser_num, user_name, room_id, content, release_time
+    from t_comment
+    where ser_num = #{serNum,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ser_num, user_name, room_id, content, release_time
+    from t_comment
+  </select>
+    <select id="selectByRoomId" resultType="cn.edu.glut.jiudian.entity.Comment">
+      select ser_num, user_name, room_id, content, release_time
+    from t_comment
+    where room_id = #{roomId,jdbcType=VARCHAR}
+    </select>
+</mapper>
