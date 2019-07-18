@@ -1,5 +1,6 @@
 package cn.edu.glut.jiudian.controller;
 
+import cn.edu.glut.jiudian.service.UserService;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -8,6 +9,6 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class adminController {
 
-
+    private UserService userService;
 
 }
