@@ -16,5 +16,5 @@
 开发环境：macOS 10.14，IntelliJ IDEA 2018.3.4，MySQL 8.0.16
 ## 页面展示
 ### 前台
-#### 1.用户界面
-![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/user_main.png)
+>>#### 1.用户界面
+>>![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/user_main.png)
