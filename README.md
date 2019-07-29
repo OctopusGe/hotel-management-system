@@ -1,6 +1,6 @@
 # 酒店管理系统
 ## 概述
->基于Spring + Spring MVC + MyBatis的酒店管理系统，主要实现酒店客房的预定。入住以及结账等功能。使用Maven进行包管理。
+>基于Spring + Spring MVC + MyBatis的酒店管理系统，主要实现酒店客房的预定、入住以及结账等功能。使用Maven进行包管理。
 ## 用户端主要功能包括：
 >登录注册、客房预订、客房评论（编写评论和查看评论）
 ## 后台管理主要功能包括：
@@ -16,5 +16,22 @@
 开发环境：macOS 10.14，IntelliJ IDEA 2018.3.4，MySQL 8.0.16
 ## 页面展示
 ### 前台
->#### 1.用户界面
->![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/user_main.png)
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/user_main.png)      
+
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/room-detail.png)
+       
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/comment-list.png)     
+### 后台      
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/admin-login.png)   
+      
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/user-managenment.png)
+        
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/room-management.png)    
+        
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/add-room.png)
+            
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/add-roomtype.png)
+     
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/reserve-management.png)
+       
+![site icon](https://github.com/OctopusGe/hotel-management-system/blob/master/preview/ruzhu-management.png)
