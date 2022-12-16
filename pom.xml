@@ -18,7 +18,7 @@
     <argLine>-Dfile.encoding=UTF-8</argLine><!--解决test命令控制台输出乱码方式1 -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <springframework.version>4.3.9.RELEASE</springframework.version>
+    <springframework.version>5.2.20.RELEASE</springframework.version>
   </properties>
   <dependencies>
     <dependency>
